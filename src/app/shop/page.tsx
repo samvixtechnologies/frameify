@@ -139,12 +139,12 @@ export default function ShopPage() {
             </p>
           </div>
           
-          <div className="flex items-center gap-4">
+          <div className="grid grid-cols-2 gap-3 md:flex md:items-center md:gap-4 w-full md:w-auto">
             {/* Mobile Filters Trigger */}
             <Sheet>
               <SheetTrigger 
                 render={
-                  <Button variant="outline" className="md:hidden flex-1 border-black/10 dark:border-white/10 bg-zinc-50 dark:bg-zinc-900 font-bold" />
+                  <Button variant="outline" className="md:hidden w-full border-black/10 dark:border-white/10 bg-zinc-50 dark:bg-zinc-900 font-bold" />
                 }
               >
                 <Filter className="mr-2 h-4 w-4" /> Filters
@@ -157,7 +157,7 @@ export default function ShopPage() {
 
             {/* Sort Dropdown */}
             <Select value={sortBy} onValueChange={(v) => { if (v) { setSortBy(v); setVisibleCount(12); } }}>
-              <SelectTrigger className="w-[180px] bg-zinc-50 dark:bg-zinc-900 border-black/10 dark:border-white/10 font-bold">
+              <SelectTrigger className="w-full md:w-[180px] bg-zinc-50 dark:bg-zinc-900 border-black/10 dark:border-white/10 font-bold">
                 <SelectValue placeholder="Sort By" />
               </SelectTrigger>
               <SelectContent>

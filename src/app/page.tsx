@@ -31,7 +31,7 @@ export default function Home() {
     <div className="flex flex-col min-h-screen overflow-hidden bg-background">
       
       {/* Hero Section */}
-      <section className="relative w-full min-h-[75vh] flex items-center justify-center overflow-hidden pt-24 md:pt-32 pb-12 bg-white dark:bg-transparent">
+      <section className="relative w-full min-h-[75vh] flex items-center justify-center overflow-hidden pt-24 md:pt-32 pb-24 md:pb-12 bg-white dark:bg-transparent">
         {/* Light Mode Grid Pattern */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] dark:hidden" />
         
@@ -57,7 +57,7 @@ export default function Home() {
               <Zap className="h-4 w-4 text-accent" />
               <span className="text-sm font-bold tracking-wide text-zinc-700 dark:text-zinc-300">NEW DRIFT COLLECTION OUT NOW</span>
             </div>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter text-zinc-900 dark:text-white drop-shadow-sm dark:drop-shadow-2xl">
+            <h1 className="text-[2.5rem] leading-tight sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter text-zinc-900 dark:text-white drop-shadow-sm dark:drop-shadow-2xl mb-4 md:mb-6">
               TURN YOUR ROOM INTO YOUR <br/>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-purple-600 to-accent animate-gradient bg-300%">VIBE.</span>
             </h1>
