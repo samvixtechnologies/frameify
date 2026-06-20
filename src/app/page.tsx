@@ -57,8 +57,8 @@ export default function Home() {
               <Zap className="h-4 w-4 text-accent" />
               <span className="text-sm font-bold tracking-wide text-zinc-700 dark:text-zinc-300">NEW DRIFT COLLECTION OUT NOW</span>
             </div>
-            <h1 className="text-[2.5rem] leading-tight sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter text-zinc-900 dark:text-white drop-shadow-sm dark:drop-shadow-2xl mb-4 md:mb-6">
-              TURN YOUR ROOM INTO YOUR <br/>
+            <h1 className="text-4xl leading-none sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter text-zinc-900 dark:text-white drop-shadow-sm dark:drop-shadow-2xl mb-4 md:mb-6">
+              TURN YOUR ROOM INTO YOUR <br className="hidden sm:block"/>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-purple-600 to-accent animate-gradient bg-300%">VIBE.</span>
             </h1>
           </motion.div>
@@ -138,19 +138,22 @@ export default function Home() {
               {categories.map((category) => (
                 <CarouselItem key={category.name} className="pl-4 md:pl-6 basis-1/3 sm:basis-1/4 md:basis-1/5 lg:basis-1/6">
                   <Link href={`/shop`} className="group flex flex-col items-center gap-3 w-full">
-                    <div className="relative w-24 h-24 sm:w-28 sm:h-28 md:w-36 md:h-36 rounded-full overflow-hidden border-[3px] border-black/5 dark:border-white/10 group-hover:border-primary transition-all duration-500 shadow-sm group-hover:shadow-[0_0_25px_rgba(147,51,234,0.3)] group-hover:scale-105">
-                      <Image
-                        src={category.image}
-                        alt={category.name}
-                        fill
-                        sizes="(max-width: 768px) 33vw, 16vw"
-                        className="object-cover transition-transform duration-700 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500" />
+                    {/* Cool Instagram-style gradient ring */}
+                    <div className="relative p-[3px] rounded-full bg-gradient-to-tr from-primary via-purple-500 to-accent transition-transform duration-500 group-hover:scale-105 group-hover:shadow-[0_0_20px_rgba(147,51,234,0.4)]">
+                      <div className="relative w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-white dark:border-zinc-950 transition-all duration-500">
+                        <Image
+                          src={category.image}
+                          alt={category.name}
+                          fill
+                          sizes="(max-width: 768px) 33vw, 16vw"
+                          className="object-cover transition-transform duration-700 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
+                      </div>
                     </div>
                     <div className="text-center w-full px-1">
                       <h3 className="font-black text-xs sm:text-sm md:text-base text-zinc-900 dark:text-white uppercase tracking-tight group-hover:text-primary transition-colors truncate">
-                        {category.icon} {category.name}
+                        {category.name}
                       </h3>
                       <p className="text-[10px] sm:text-xs text-zinc-500 font-bold mt-0.5">{category.count} DROPS</p>
                     </div>
@@ -243,7 +246,7 @@ export default function Home() {
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/10 dark:bg-primary/20 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3" />
           <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-accent/10 dark:bg-accent/20 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/3" />
           
-          <div className="relative z-10 grid md:grid-cols-2 gap-8 md:gap-12 items-center p-8 md:p-12 lg:p-16">
+          <div className="relative z-10 grid md:grid-cols-2 gap-8 md:gap-12 items-center p-6 sm:p-8 md:p-12 lg:p-16">
             <div className="space-y-6">
               <div className="space-y-2">
                 <span className="text-blue-600 dark:text-blue-400 font-mono text-sm font-bold tracking-[0.2em] uppercase">// CUSTOM BUILDER</span>
@@ -269,7 +272,7 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
-              <Link href="/custom" className={cn(buttonVariants({ size: "lg" }), "h-14 px-10 text-lg font-bold rounded-full bg-black dark:bg-white text-white dark:text-black hover:bg-zinc-800 dark:hover:bg-zinc-200 shadow-[0_0_20px_rgba(0,0,0,0.1)] dark:shadow-[0_0_30px_rgba(255,255,255,0.3)] transition-all hover:scale-105 flex items-center w-max")}>
+              <Link href="/custom" className={cn(buttonVariants({ size: "lg" }), "h-14 px-8 md:px-10 text-base md:text-lg font-bold rounded-full bg-black dark:bg-white text-white dark:text-black hover:bg-zinc-800 dark:hover:bg-zinc-200 shadow-[0_0_20px_rgba(0,0,0,0.1)] dark:shadow-[0_0_30px_rgba(255,255,255,0.3)] transition-all hover:scale-105 flex items-center justify-center w-full sm:w-max")}>
                 <Upload className="mr-2 h-5 w-5" /> Launch Builder
               </Link>
             </div>
