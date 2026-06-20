@@ -136,8 +136,8 @@ export default function Home() {
           >
             <CarouselContent className="-ml-4 md:-ml-6">
               {categories.map((category) => (
-                <CarouselItem key={category.name} className="pl-4 md:pl-6 basis-1/3 sm:basis-1/4 md:basis-1/5 lg:basis-1/6">
-                  <Link href={`/shop`} className="group flex flex-col items-center gap-3 w-full">
+                <CarouselItem key={category.name} className="pl-4 md:pl-8 basis-auto">
+                  <Link href={`/shop`} className="group flex flex-col items-center gap-3 w-24 sm:w-28 md:w-36">
                     {/* Cool Instagram-style gradient ring */}
                     <div className="relative p-[3px] rounded-full bg-gradient-to-tr from-primary via-purple-500 to-accent transition-transform duration-500 group-hover:scale-105 group-hover:shadow-[0_0_20px_rgba(147,51,234,0.4)]">
                       <div className="relative w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-white dark:border-zinc-950 transition-all duration-500">
