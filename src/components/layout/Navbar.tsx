@@ -84,18 +84,41 @@ export function Navbar() {
           </div>
 
           <Sheet>
-            <SheetTrigger className="md:hidden inline-flex items-center justify-center rounded-full h-11 w-11 text-zinc-600 dark:text-zinc-300 hover:text-black dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10 border border-transparent hover:border-black/10 dark:hover:border-white/10 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background transition-all">
+            <SheetTrigger className="inline-flex items-center justify-center rounded-full h-11 w-11 text-zinc-600 dark:text-zinc-300 hover:text-black dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10 border border-transparent hover:border-black/10 dark:hover:border-white/10 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background transition-all">
               <Menu className="h-6 w-6" />
               <span className="sr-only">Toggle Menu</span>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-white/95 dark:bg-black/95 backdrop-blur-3xl border-l border-black/10 dark:border-white/10">
-              <SheetTitle className="text-left font-black tracking-tighter text-2xl text-black dark:text-white">
+            <SheetContent side="right" className="w-full sm:w-[450px] bg-white/95 dark:bg-black/95 backdrop-blur-3xl border-l border-black/10 dark:border-white/10 p-8 flex flex-col">
+              <SheetTitle className="text-left font-black tracking-tighter text-2xl text-black dark:text-white border-b border-black/10 dark:border-white/10 pb-6 mb-6">
                 FRAMEIFY<span className="text-primary dark:text-accent">.</span>
               </SheetTitle>
-              <div className="flex flex-col space-y-6 pt-16">
-                <Link href="/shop" className="text-4xl font-black text-zinc-600 dark:text-zinc-300 hover:text-primary transition-colors hover:translate-x-2 transform duration-300">Shop.</Link>
-                <Link href="/categories" className="text-4xl font-black text-zinc-600 dark:text-zinc-300 hover:text-primary transition-colors hover:translate-x-2 transform duration-300">Categories.</Link>
-                <Link href="/custom" className="text-4xl font-black text-primary dark:text-accent hover:text-black dark:hover:text-white transition-colors hover:translate-x-2 transform duration-300">Custom.</Link>
+              <div className="flex-1 overflow-y-auto pr-6 -mr-6">
+                <div className="flex flex-col space-y-6 mb-12">
+                  <Link href="/shop" className="text-4xl sm:text-5xl font-black text-zinc-800 dark:text-zinc-200 hover:text-primary transition-colors hover:translate-x-2 transform duration-300">Shop.</Link>
+                  <Link href="/categories" className="text-4xl sm:text-5xl font-black text-zinc-800 dark:text-zinc-200 hover:text-primary transition-colors hover:translate-x-2 transform duration-300">Categories.</Link>
+                  <Link href="/custom" className="text-4xl sm:text-5xl font-black text-primary dark:text-accent hover:text-black dark:hover:text-white transition-colors hover:translate-x-2 transform duration-300">Custom.</Link>
+                </div>
+                
+                <div className="grid grid-cols-2 gap-8 mb-12">
+                  <div>
+                    <h4 className="font-bold text-sm text-zinc-400 mb-4 uppercase tracking-wider">Shop Collections</h4>
+                    <div className="flex flex-col space-y-3">
+                      <Link href="/shop/anime" className="text-zinc-600 dark:text-zinc-400 font-medium hover:text-primary transition-colors">Anime Posters</Link>
+                      <Link href="/shop/gaming" className="text-zinc-600 dark:text-zinc-400 font-medium hover:text-primary transition-colors">Gaming Posters</Link>
+                      <Link href="/shop/cars" className="text-zinc-600 dark:text-zinc-400 font-medium hover:text-primary transition-colors">Car Posters</Link>
+                      <Link href="/shop/aesthetic" className="text-zinc-600 dark:text-zinc-400 font-medium hover:text-primary transition-colors">Aesthetic Posters</Link>
+                    </div>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-sm text-zinc-400 mb-4 uppercase tracking-wider">Support</h4>
+                    <div className="flex flex-col space-y-3">
+                      <Link href="/faq" className="text-zinc-600 dark:text-zinc-400 font-medium hover:text-primary transition-colors">FAQ</Link>
+                      <Link href="/shipping" className="text-zinc-600 dark:text-zinc-400 font-medium hover:text-primary transition-colors">Shipping & Returns</Link>
+                      <Link href="/track-order" className="text-zinc-600 dark:text-zinc-400 font-medium hover:text-primary transition-colors">Track Order</Link>
+                      <Link href="/contact" className="text-zinc-600 dark:text-zinc-400 font-medium hover:text-primary transition-colors">Contact Us</Link>
+                    </div>
+                  </div>
+                </div>
               </div>
             </SheetContent>
           </Sheet>

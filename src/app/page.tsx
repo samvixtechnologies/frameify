@@ -234,64 +234,30 @@ export default function Home() {
       </section>
 
       {/* Custom Poster Builder CTA */}
-      <section className="py-20 md:py-28 container px-4 md:px-6">
+      <section className="py-12 md:py-16 container px-4 md:px-6">
         <motion.div 
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeInUp}
-          className="relative rounded-[2.5rem] overflow-hidden bg-white dark:bg-zinc-900 border border-black/5 dark:border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.05)] dark:shadow-2xl"
+          className="relative rounded-[2rem] overflow-hidden bg-gradient-to-r from-zinc-900 to-black dark:from-zinc-900 dark:to-zinc-950 border border-black/5 dark:border-white/10 shadow-xl"
         >
-          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/10 dark:bg-primary/20 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3" />
-          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-accent/10 dark:bg-accent/20 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/3" />
+          <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-primary/20 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/3" />
           
-          <div className="relative z-10 grid md:grid-cols-2 gap-8 md:gap-12 items-center p-6 sm:p-8 md:p-12 lg:p-16">
-            <div className="space-y-6">
-              <div className="space-y-2">
-                <span className="text-blue-600 dark:text-blue-400 font-mono text-sm font-bold tracking-[0.2em] uppercase">// CUSTOM BUILDER</span>
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter text-black dark:text-white uppercase drop-shadow-sm">
-                  Make it <br/>
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-cyan-500 to-blue-600 dark:from-accent dark:via-cyan-400 dark:to-blue-500 drop-shadow-md">1 of 1.</span>
-                </h2>
-              </div>
-              <p className="text-xl text-zinc-600 dark:text-zinc-400 font-medium">
-                Upload your photos. Add custom text. Choose your vibe. We&apos;ll print it on gallery-grade paper and ship it to your door.
+          <div className="relative z-10 flex flex-col md:flex-row items-center justify-between p-6 md:p-8 lg:p-10 gap-6 md:gap-12">
+            <div className="flex-1 space-y-4 text-center md:text-left">
+              <span className="text-blue-400 font-mono text-xs font-bold tracking-[0.2em] uppercase">// CUSTOM BUILDER</span>
+              <h2 className="text-3xl md:text-4xl font-black tracking-tighter text-white uppercase drop-shadow-sm">
+                Make it <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-500">1 of 1.</span>
+              </h2>
+              <p className="text-zinc-400 font-medium text-sm md:text-base max-w-xl mx-auto md:mx-0">
+                Upload your photos, add custom text, and choose your vibe. We&apos;ll print it on gallery-grade paper and ship it to your door.
               </p>
-              <ul className="space-y-4 mb-8">
-                {[
-                  "Upload any image from your camera roll",
-                  "Pick a style: Anime, Cyberpunk, Vintage...",
-                  "Add a custom title & typography",
-                ].map((step, i) => (
-                  <li key={i} className="flex items-center text-zinc-700 dark:text-zinc-200 font-bold text-lg">
-                    <div className="w-8 h-8 rounded-lg bg-zinc-100 dark:bg-white/10 border border-black/5 dark:border-white/20 text-zinc-900 dark:text-white flex items-center justify-center mr-4 text-sm font-black shadow-sm dark:shadow-inner">
-                      {i + 1}
-                    </div>
-                    {step}
-                  </li>
-                ))}
-              </ul>
-              <Link href="/custom" className={cn(buttonVariants({ size: "lg" }), "h-14 px-8 md:px-10 text-base md:text-lg font-bold rounded-full bg-black dark:bg-white text-white dark:text-black hover:bg-zinc-800 dark:hover:bg-zinc-200 shadow-[0_0_20px_rgba(0,0,0,0.1)] dark:shadow-[0_0_30px_rgba(255,255,255,0.3)] transition-all hover:scale-105 flex items-center justify-center w-full sm:w-max")}>
-                <Upload className="mr-2 h-5 w-5" /> Launch Builder
-              </Link>
             </div>
             
-            <div className="relative aspect-[3/4] md:aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border border-black/10 dark:border-white/20 transform md:rotate-3 hover:rotate-0 transition-transform duration-500">
-               <Image
-                  src="/images/anime.png"
-                  alt="Custom Poster Example"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-                <div className="absolute bottom-6 left-6 right-6">
-                   <div className="bg-white/90 dark:bg-black/40 backdrop-blur-xl p-4 rounded-2xl border border-black/10 dark:border-white/10 shadow-lg">
-                      <p className="text-xs text-primary dark:text-accent font-bold mb-1 uppercase tracking-wider">Custom Print</p>
-                      <p className="text-black dark:text-white font-bold text-lg">Tokyo Drift Edition</p>
-                   </div>
-                </div>
-            </div>
+            <Link href="/custom" className={cn(buttonVariants({ size: "lg" }), "h-12 px-8 text-base font-bold rounded-full bg-white text-black hover:bg-zinc-200 shadow-[0_0_20px_rgba(255,255,255,0.1)] transition-all hover:scale-105 flex items-center w-full md:w-auto shrink-0 justify-center")}>
+              <Upload className="mr-2 h-4 w-4" /> Launch Builder
+            </Link>
           </div>
         </motion.div>
       </section>
