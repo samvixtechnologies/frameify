@@ -161,8 +161,6 @@ export default function Home() {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="h-14 w-14 border-black/10 dark:border-white/10 hover:bg-black/5 dark:hover:bg-white/10 text-black dark:text-white" />
-            <CarouselNext className="h-14 w-14 border-black/10 dark:border-white/10 hover:bg-black/5 dark:hover:bg-white/10 text-black dark:text-white" />
           </Carousel>
         </motion.div>
       </section>
