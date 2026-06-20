@@ -6,6 +6,7 @@ import { ArrowRight, Star, Upload, Zap, Flame } from "lucide-react";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Card, CardContent } from "@/components/ui/card";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { motion, Variants } from "framer-motion";
 
 const categories = [
@@ -13,13 +14,21 @@ const categories = [
   { name: "Gaming", icon: "🎮", image: "/images/car.png", count: "80+" },
   { name: "Cars", icon: "🏎️", image: "/images/car.png", count: "150+" },
   { name: "Movies", icon: "🎬", image: "/images/anime.png", count: "200+" },
+  { name: "Vintage", icon: "🎞️", image: "/images/hero.png", count: "90+" },
+  { name: "Music", icon: "🎵", image: "/images/car.png", count: "110+" },
 ];
 
 const bestSellers = [
-  { id: 1, title: "Cyberpunk City Nights", price: "₹799", rating: 4.8, image: "/images/anime.png" },
+  { id: 1, title: "Cyberpunk Nights", price: "₹799", rating: 4.8, image: "/images/anime.png" },
   { id: 2, title: "JDM Legend Drift", price: "₹999", rating: 4.9, image: "/images/car.png" },
   { id: 3, title: "Neon Tokyo", price: "₹799", rating: 4.7, image: "/images/hero.png" },
   { id: 4, title: "Retro Arcade", price: "₹499", rating: 4.6, image: "/images/anime.png" },
+  { id: 5, title: "Initial D AE86", price: "₹899", rating: 5.0, image: "/images/car.png" },
+  { id: 6, title: "Akira Bike", price: "₹799", rating: 4.8, image: "/images/anime.png" },
+  { id: 7, title: "Vaporwave Sunset", price: "₹599", rating: 4.5, image: "/images/hero.png" },
+  { id: 8, title: "Midnight Club", price: "₹899", rating: 4.9, image: "/images/car.png" },
+  { id: 9, title: "Ghibli Magic", price: "₹699", rating: 4.7, image: "/images/anime.png" },
+  { id: 10, title: "90s Room Setup", price: "₹599", rating: 4.6, image: "/images/hero.png" },
 ];
 
 const fadeInUp: Variants = {
@@ -130,36 +139,48 @@ export default function Home() {
         </motion.div>
 
         <motion.div 
-          variants={staggerContainer}
+          variants={fadeInUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="relative px-12"
         >
-          {categories.map((category) => (
-            <motion.div key={category.name} variants={fadeInUp}>
-              <Link href={`/shop/${category.name.toLowerCase()}`} className="group block">
-                <Card className="overflow-hidden border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/5 backdrop-blur-sm relative h-[280px] rounded-3xl hover:border-primary/50 transition-all duration-500 shadow-md">
-                  <Image
-                    src={category.image}
-                    alt={category.name}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 dark:opacity-60 group-hover:opacity-100 grayscale-[20%] dark:grayscale-[30%] group-hover:grayscale-0"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent dark:from-black dark:via-black/40" />
-                  <CardContent className="absolute bottom-0 w-full p-8 text-white">
-                    <h3 className="text-3xl font-black mb-2 flex items-center gap-3 drop-shadow-md tracking-tight">
-                      {category.icon} {category.name}
-                    </h3>
-                    <p className="text-zinc-200 dark:text-zinc-300 font-bold bg-white/20 dark:bg-white/10 backdrop-blur-md inline-block px-3 py-1 rounded-full text-sm border border-white/20 dark:border-white/10">
-                      {category.count} Drops
-                    </p>
-                  </CardContent>
-                </Card>
-              </Link>
-            </motion.div>
-          ))}
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-4 md:-ml-6">
+              {categories.map((category) => (
+                <CarouselItem key={category.name} className="pl-4 md:pl-6 basis-full sm:basis-1/2 lg:basis-1/3 xl:basis-1/4">
+                  <Link href={`/shop/${category.name.toLowerCase()}`} className="group block">
+                    <Card className="overflow-hidden border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/5 backdrop-blur-sm relative h-[320px] rounded-3xl hover:border-primary/50 transition-all duration-500 shadow-md">
+                      <Image
+                        src={category.image}
+                        alt={category.name}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                        className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 dark:opacity-60 group-hover:opacity-100 grayscale-[20%] dark:grayscale-[30%] group-hover:grayscale-0"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent dark:from-black dark:via-black/40" />
+                      <CardContent className="absolute bottom-0 w-full p-8 text-white">
+                        <h3 className="text-3xl font-black mb-2 flex items-center gap-3 drop-shadow-md tracking-tight">
+                          {category.icon} {category.name}
+                        </h3>
+                        <p className="text-zinc-200 dark:text-zinc-300 font-bold bg-white/20 dark:bg-white/10 backdrop-blur-md inline-block px-3 py-1 rounded-full text-sm border border-white/20 dark:border-white/10">
+                          {category.count} Drops
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </Link>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="h-14 w-14 border-black/10 dark:border-white/10 hover:bg-black/5 dark:hover:bg-white/10 text-black dark:text-white" />
+            <CarouselNext className="h-14 w-14 border-black/10 dark:border-white/10 hover:bg-black/5 dark:hover:bg-white/10 text-black dark:text-white" />
+          </Carousel>
         </motion.div>
       </section>
 
@@ -195,31 +216,31 @@ export default function Home() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
+            className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6"
           >
             {bestSellers.map((product) => (
               <motion.div key={product.id} variants={fadeInUp}>
-                <Card className="group overflow-hidden border border-black/5 dark:border-white/5 bg-white dark:bg-black/40 backdrop-blur-xl hover:border-primary/30 dark:hover:border-accent/40 transition-all duration-500 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-none hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] dark:hover:shadow-[0_0_30px_rgba(0,240,255,0.15)] -translate-y-1 hover:-translate-y-2">
-                  <div className="relative aspect-[3/4] overflow-hidden rounded-t-3xl">
+                <Card className="group overflow-hidden border border-black/5 dark:border-white/5 bg-white dark:bg-black/40 backdrop-blur-xl hover:border-primary/30 dark:hover:border-accent/40 transition-all duration-500 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-none hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] dark:hover:shadow-[0_0_30px_rgba(0,240,255,0.15)] -translate-y-1 hover:-translate-y-2">
+                  <div className="relative aspect-[3/4] overflow-hidden rounded-t-2xl">
                     <Image
                       src={product.image}
                       alt={product.title}
                       fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                      sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 20vw"
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                     />
-                    <div className="absolute top-4 right-4 bg-white/90 dark:bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-full border border-black/5 dark:border-white/10 flex items-center text-yellow-500 text-xs font-bold shadow-sm">
-                      <Star className="h-3.5 w-3.5 fill-current mr-1" />
+                    <div className="absolute top-2 right-2 bg-white/90 dark:bg-black/60 backdrop-blur-md px-2 py-0.5 rounded-full border border-black/5 dark:border-white/10 flex items-center text-yellow-500 text-[10px] font-bold shadow-sm">
+                      <Star className="h-3 w-3 fill-current mr-1" />
                       {product.rating}
                     </div>
                     
-                    <div className="absolute inset-x-0 bottom-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-black/60 to-transparent flex gap-2 translate-y-4 group-hover:translate-y-0">
-                      <Button className="w-full bg-white text-black hover:bg-zinc-100 font-bold shadow-lg rounded-full" size="sm">Add to Cart</Button>
+                    <div className="absolute inset-x-0 bottom-0 p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-black/60 to-transparent flex gap-2 translate-y-4 group-hover:translate-y-0">
+                      <Button className="w-full bg-white text-black hover:bg-zinc-100 font-bold shadow-lg rounded-full h-8 text-xs" size="sm">Add to Cart</Button>
                     </div>
                   </div>
-                  <CardContent className="p-5">
-                    <h3 className="font-bold text-lg mb-1 text-zinc-900 dark:text-white group-hover:text-primary transition-colors">{product.title}</h3>
-                    <p className="text-primary dark:text-accent font-black text-xl">{product.price}</p>
+                  <CardContent className="p-3 md:p-4">
+                    <h3 className="font-bold text-sm md:text-base mb-1 text-zinc-900 dark:text-white group-hover:text-primary transition-colors truncate">{product.title}</h3>
+                    <p className="text-primary dark:text-accent font-black text-base md:text-lg">{product.price}</p>
                   </CardContent>
                 </Card>
               </motion.div>
