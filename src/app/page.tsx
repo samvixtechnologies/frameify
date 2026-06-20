@@ -100,13 +100,13 @@ export default function Home() {
       </div>
 
       {/* Categories Section */}
-      <section className="py-20 md:py-24 container px-4 md:px-6 relative z-10">
+      <section className="py-20 md:py-24 relative z-10 overflow-hidden">
         <motion.div 
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={fadeInUp}
-          className="flex justify-between items-end mb-12"
+          className="flex justify-between items-end mb-12 container px-4 md:px-6"
         >
           <div className="space-y-2">
             <span className="text-primary font-mono text-sm font-bold tracking-[0.2em] uppercase">// THE COLLECTION</span>
@@ -125,16 +125,17 @@ export default function Home() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="relative px-12"
+          className="w-full"
         >
           <Carousel
             opts={{
               align: "start",
               loop: true,
+              dragFree: true,
             }}
-            className="w-full"
+            className="w-full cursor-grab active:cursor-grabbing"
           >
-            <CarouselContent className="-ml-4 md:-ml-6">
+            <CarouselContent className="ml-0 px-4 md:px-6">
               {categories.map((category) => (
                 <CarouselItem key={category.name} className="pl-4 md:pl-8 basis-auto">
                   <Link href={`/shop`} className="group flex flex-col items-center gap-3 w-24 sm:w-28 md:w-36">
