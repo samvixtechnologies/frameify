@@ -9,27 +9,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { motion, Variants } from "framer-motion";
 
-const categories = [
-  { name: "Anime", icon: "🎌", image: "/images/anime.png", count: "120+" },
-  { name: "Gaming", icon: "🎮", image: "/images/car.png", count: "80+" },
-  { name: "Cars", icon: "🏎️", image: "/images/car.png", count: "150+" },
-  { name: "Movies", icon: "🎬", image: "/images/anime.png", count: "200+" },
-  { name: "Vintage", icon: "🎞️", image: "/images/hero.png", count: "90+" },
-  { name: "Music", icon: "🎵", image: "/images/car.png", count: "110+" },
-];
+import { categories, products } from "@/lib/mock-data";
 
-const bestSellers = [
-  { id: 1, title: "Cyberpunk Nights", price: "₹799", rating: 4.8, image: "/images/anime.png" },
-  { id: 2, title: "JDM Legend Drift", price: "₹999", rating: 4.9, image: "/images/car.png" },
-  { id: 3, title: "Neon Tokyo", price: "₹799", rating: 4.7, image: "/images/hero.png" },
-  { id: 4, title: "Retro Arcade", price: "₹499", rating: 4.6, image: "/images/anime.png" },
-  { id: 5, title: "Initial D AE86", price: "₹899", rating: 5.0, image: "/images/car.png" },
-  { id: 6, title: "Akira Bike", price: "₹799", rating: 4.8, image: "/images/anime.png" },
-  { id: 7, title: "Vaporwave Sunset", price: "₹599", rating: 4.5, image: "/images/hero.png" },
-  { id: 8, title: "Midnight Club", price: "₹899", rating: 4.9, image: "/images/car.png" },
-  { id: 9, title: "Ghibli Magic", price: "₹699", rating: 4.7, image: "/images/anime.png" },
-  { id: 10, title: "90s Room Setup", price: "₹599", rating: 4.6, image: "/images/hero.png" },
-];
+const bestSellers = products.filter(p => p.isTrending);
 
 const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 40 },
@@ -240,7 +222,7 @@ export default function Home() {
                   </div>
                   <CardContent className="p-3 md:p-4">
                     <h3 className="font-bold text-sm md:text-base mb-1 text-zinc-900 dark:text-white group-hover:text-primary transition-colors truncate">{product.title}</h3>
-                    <p className="text-primary dark:text-accent font-black text-base md:text-lg">{product.price}</p>
+                    <p className="text-primary dark:text-accent font-black text-base md:text-lg">{product.formattedPrice}</p>
                   </CardContent>
                 </Card>
               </motion.div>
