@@ -136,26 +136,24 @@ export default function Home() {
           >
             <CarouselContent className="-ml-4 md:-ml-6">
               {categories.map((category) => (
-                <CarouselItem key={category.name} className="pl-4 md:pl-6 basis-full sm:basis-1/2 lg:basis-1/3 xl:basis-1/4">
-                  <Link href={`/shop/${category.name.toLowerCase()}`} className="group block">
-                    <Card className="overflow-hidden border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/5 backdrop-blur-sm relative h-[320px] rounded-3xl hover:border-primary/50 transition-all duration-500 shadow-md">
+                <CarouselItem key={category.name} className="pl-4 md:pl-6 basis-1/3 sm:basis-1/4 md:basis-1/5 lg:basis-1/6">
+                  <Link href={`/shop`} className="group flex flex-col items-center gap-3 w-full">
+                    <div className="relative w-24 h-24 sm:w-28 sm:h-28 md:w-36 md:h-36 rounded-full overflow-hidden border-[3px] border-black/5 dark:border-white/10 group-hover:border-primary transition-all duration-500 shadow-sm group-hover:shadow-[0_0_25px_rgba(147,51,234,0.3)] group-hover:scale-105">
                       <Image
                         src={category.image}
                         alt={category.name}
                         fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                        className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 dark:opacity-60 group-hover:opacity-100 grayscale-[20%] dark:grayscale-[30%] group-hover:grayscale-0"
+                        sizes="(max-width: 768px) 33vw, 16vw"
+                        className="object-cover transition-transform duration-700 group-hover:scale-110"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent dark:from-black dark:via-black/40" />
-                      <CardContent className="absolute bottom-0 w-full p-8 text-white">
-                        <h3 className="text-3xl font-black mb-2 flex items-center gap-3 drop-shadow-md tracking-tight">
-                          {category.icon} {category.name}
-                        </h3>
-                        <p className="text-zinc-200 dark:text-zinc-300 font-bold bg-white/20 dark:bg-white/10 backdrop-blur-md inline-block px-3 py-1 rounded-full text-sm border border-white/20 dark:border-white/10">
-                          {category.count} Drops
-                        </p>
-                      </CardContent>
-                    </Card>
+                      <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500" />
+                    </div>
+                    <div className="text-center w-full px-1">
+                      <h3 className="font-black text-xs sm:text-sm md:text-base text-zinc-900 dark:text-white uppercase tracking-tight group-hover:text-primary transition-colors truncate">
+                        {category.icon} {category.name}
+                      </h3>
+                      <p className="text-[10px] sm:text-xs text-zinc-500 font-bold mt-0.5">{category.count} DROPS</p>
+                    </div>
                   </Link>
                 </CarouselItem>
               ))}
