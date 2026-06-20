@@ -3,9 +3,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Star, Upload, Zap, Flame } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import { Card, CardContent } from "@/components/ui/card";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 const categories = [
   { name: "Anime", icon: "🎌", image: "/images/anime.png", count: "120+" },
@@ -21,12 +22,12 @@ const bestSellers = [
   { id: 4, title: "Retro Arcade", price: "₹499", rating: 4.6, image: "/images/anime.png" },
 ];
 
-const fadeInUp = {
+const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 40 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
 };
 
-const staggerContainer = {
+const staggerContainer: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -86,12 +87,12 @@ export default function Home() {
             transition={{ duration: 0.6, delay: 0.5 }}
             className="flex flex-col sm:flex-row gap-4 justify-center pt-8"
           >
-            <Button size="lg" className="h-14 px-10 text-lg font-bold rounded-full bg-primary text-white hover:bg-primary/90 shadow-[0_0_20px_rgba(147,51,234,0.3)] dark:shadow-[0_0_40px_rgba(147,51,234,0.5)] transition-all hover:scale-105" asChild>
-              <Link href="/shop">Shop Posters</Link>
-            </Button>
-            <Button size="lg" variant="outline" className="h-14 px-10 text-lg font-bold rounded-full border-black/20 dark:border-white/20 bg-black/5 dark:bg-white/5 backdrop-blur-md text-black dark:text-white hover:bg-black/10 dark:hover:bg-white/10 hover:border-black/30 dark:hover:border-white/30 transition-all hover:scale-105" asChild>
-              <Link href="/custom">Create Custom</Link>
-            </Button>
+            <Link href="/shop" className={cn(buttonVariants({ size: "lg" }), "h-14 px-10 text-lg font-bold rounded-full bg-primary text-white hover:bg-primary/90 shadow-[0_0_20px_rgba(147,51,234,0.3)] dark:shadow-[0_0_40px_rgba(147,51,234,0.5)] transition-all hover:scale-105")}>
+              Shop Posters
+            </Link>
+            <Link href="/custom" className={cn(buttonVariants({ size: "lg", variant: "outline" }), "h-14 px-10 text-lg font-bold rounded-full border-black/20 dark:border-white/20 bg-black/5 dark:bg-white/5 backdrop-blur-md text-black dark:text-white hover:bg-black/10 dark:hover:bg-white/10 hover:border-black/30 dark:hover:border-white/30 transition-all hover:scale-105")}>
+              Create Custom
+            </Link>
           </motion.div>
         </div>
       </section>
@@ -184,9 +185,9 @@ export default function Home() {
               </h2>
               <p className="text-xl text-zinc-600 dark:text-muted-foreground font-medium pt-2">The most hyped prints this week.</p>
             </div>
-            <Button variant="ghost" className="hidden sm:flex text-primary hover:text-primary hover:bg-primary/10 font-bold" asChild>
-              <Link href="/shop?sort=trending">View Top 50 <ArrowRight className="ml-2 h-4 w-4" /></Link>
-            </Button>
+            <Link href="/shop?sort=trending" className={cn(buttonVariants({ variant: "ghost" }), "hidden sm:flex text-primary hover:text-primary hover:bg-primary/10 font-bold")}>
+              View Top 50 <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
           </motion.div>
 
           <motion.div 
@@ -265,11 +266,9 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
-              <Button size="lg" className="h-14 px-10 text-lg font-bold rounded-full bg-black dark:bg-white text-white dark:text-black hover:bg-zinc-800 dark:hover:bg-zinc-200 shadow-[0_0_20px_rgba(0,0,0,0.1)] dark:shadow-[0_0_30px_rgba(255,255,255,0.3)] transition-all hover:scale-105" asChild>
-                <Link href="/custom">
-                  <Upload className="mr-2 h-5 w-5" /> Launch Builder
-                </Link>
-              </Button>
+              <Link href="/custom" className={cn(buttonVariants({ size: "lg" }), "h-14 px-10 text-lg font-bold rounded-full bg-black dark:bg-white text-white dark:text-black hover:bg-zinc-800 dark:hover:bg-zinc-200 shadow-[0_0_20px_rgba(0,0,0,0.1)] dark:shadow-[0_0_30px_rgba(255,255,255,0.3)] transition-all hover:scale-105 flex items-center w-max")}>
+                <Upload className="mr-2 h-5 w-5" /> Launch Builder
+              </Link>
             </div>
             
             <div className="relative aspect-[3/4] md:aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border border-black/10 dark:border-white/20 transform md:rotate-3 hover:rotate-0 transition-transform duration-500">
