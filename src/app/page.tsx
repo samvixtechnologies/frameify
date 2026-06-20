@@ -202,29 +202,31 @@ export default function Home() {
           >
             {bestSellers.map((product) => (
               <motion.div key={product.id} variants={fadeInUp}>
-                <Card className="group overflow-hidden border border-black/5 dark:border-white/5 bg-white dark:bg-black/40 backdrop-blur-xl hover:border-primary/30 dark:hover:border-accent/40 transition-all duration-500 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-none hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] dark:hover:shadow-[0_0_30px_rgba(0,240,255,0.15)] -translate-y-1 hover:-translate-y-2">
-                  <div className="relative aspect-[3/4] overflow-hidden rounded-t-2xl">
-                    <Image
-                      src={product.image}
-                      alt={product.title}
-                      fill
-                      sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 20vw"
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                    <div className="absolute top-2 right-2 bg-white/90 dark:bg-black/60 backdrop-blur-md px-2 py-0.5 rounded-full border border-black/5 dark:border-white/10 flex items-center text-yellow-500 text-[10px] font-bold shadow-sm">
-                      <Star className="h-3 w-3 fill-current mr-1" />
-                      {product.rating}
+                <Link href={`/shop/${product.id}`} className="block">
+                  <Card className="group overflow-hidden border border-black/5 dark:border-white/5 bg-white dark:bg-black/40 backdrop-blur-xl hover:border-primary/30 dark:hover:border-accent/40 transition-all duration-500 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-none hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] dark:hover:shadow-[0_0_30px_rgba(0,240,255,0.15)] -translate-y-1 hover:-translate-y-2">
+                    <div className="relative aspect-[3/4] overflow-hidden rounded-t-2xl">
+                      <Image
+                        src={product.image}
+                        alt={product.title}
+                        fill
+                        sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 20vw"
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                      <div className="absolute top-2 right-2 bg-white/90 dark:bg-black/60 backdrop-blur-md px-2 py-0.5 rounded-full border border-black/5 dark:border-white/10 flex items-center text-yellow-500 text-[10px] font-bold shadow-sm">
+                        <Star className="h-3 w-3 fill-current mr-1" />
+                        {product.rating}
+                      </div>
+                      
+                      <div className="absolute inset-x-0 bottom-0 p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-black/60 to-transparent flex gap-2 translate-y-4 group-hover:translate-y-0">
+                        <Button className="w-full bg-white text-black hover:bg-zinc-100 font-bold shadow-lg rounded-full h-8 text-xs" size="sm">Add to Cart</Button>
+                      </div>
                     </div>
-                    
-                    <div className="absolute inset-x-0 bottom-0 p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-black/60 to-transparent flex gap-2 translate-y-4 group-hover:translate-y-0">
-                      <Button className="w-full bg-white text-black hover:bg-zinc-100 font-bold shadow-lg rounded-full h-8 text-xs" size="sm">Add to Cart</Button>
-                    </div>
-                  </div>
-                  <CardContent className="p-3 md:p-4">
-                    <h3 className="font-bold text-sm md:text-base mb-1 text-zinc-900 dark:text-white group-hover:text-primary transition-colors truncate">{product.title}</h3>
-                    <p className="text-primary dark:text-accent font-black text-base md:text-lg">{product.formattedPrice}</p>
-                  </CardContent>
-                </Card>
+                    <CardContent className="p-3 md:p-4">
+                      <h3 className="font-bold text-sm md:text-base mb-1 text-zinc-900 dark:text-white group-hover:text-primary transition-colors truncate">{product.title}</h3>
+                      <p className="text-primary dark:text-accent font-black text-base md:text-lg">{product.formattedPrice}</p>
+                    </CardContent>
+                  </Card>
+                </Link>
               </motion.div>
             ))}
           </motion.div>
